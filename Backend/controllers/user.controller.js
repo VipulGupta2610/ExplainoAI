@@ -43,16 +43,18 @@ export const creating_new_user = async (req, res) => {
 
 export const login = async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const { email, isPass , password } = req.body;
         const isExist = await user.findOne({ email })
         if (!isExist) {
             console.log("User not found")
             return res.status(400).json({ message: "User not found" })
         }
-        const isMactch = await bcryptjs.compare(password, isExist.password);
-        if (!isMactch) {
-            console.log("Wrong password")
-            return res.status(500).json({ message: "Wrong password" })
+        if (isPass == true){
+            const isMactch = await bcryptjs.compare(password, isExist.password);
+            if (!isMactch) {
+                console.log("Wrong password")
+                return res.status(500).json({ message: "Wrong password" })
+            }
         }
         const info = await user.findOne({ email }).select("-password")
         return res.status(200).json({ message: "Login successfully", info })

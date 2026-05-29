@@ -6,20 +6,22 @@ import { api } from "../api/axios";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../redux/authslice";
 import toast from "react-hot-toast";
-
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 export default function Login() {
 
   const dispatch = useDispatch()
-const navigate = useNavigate()
+  const navigate = useNavigate()
   const { register, handleSubmit, formState: { isSubmitting } } = useForm();
 
   const onSubmit = async (data) => {
-    const info ={
-      email:data.email,
-      password:data.password
+    const info = {
+      email: data.email,
+      isPass: true,
+      password: data.password
     }
     try {
-      const res = await api.post("/user/login",info)
+      const res = await api.post("/user/login", info)
       dispatch(loginUser(res.data.info))
       console.log(res)
       toast.success("Login successfully")
@@ -87,7 +89,7 @@ const navigate = useNavigate()
                   type="email"
                   placeholder="Email address"
                   className="w-full pl-12 pr-4 py-3 rounded-xl bg-gray-100 dark:bg-gray-900 outline-none focus:ring-2 focus:ring-blue-500"
-                  {...register("email",{required:true})}
+                  {...register("email", { required: true })}
                 />
               </div>
 
@@ -98,7 +100,7 @@ const navigate = useNavigate()
                   type="password"
                   placeholder="Password"
                   className="w-full pl-12 pr-4 py-3 rounded-xl bg-gray-100 dark:bg-gray-900 outline-none focus:ring-2 focus:ring-blue-500"
-                  {...register("password",{required:true})}
+                  {...register("password", { required: true })}
                 />
               </div>
 
@@ -117,7 +119,7 @@ const navigate = useNavigate()
               {/* LOGIN BUTTON */}
               <motion.button
 
-              type="submit"
+                type="submit"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium transition"
@@ -135,9 +137,25 @@ const navigate = useNavigate()
               </div>
 
               {/* GOOGLE LOGIN */}
-              <button className="w-full py-3 rounded-xl border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-900 transition">
-                Continue with Google
-              </button>
+              <GoogleLogin
+                onSuccess={async (CredentialResponse) => {
+                  const user = jwtDecode(CredentialResponse.credential)
+                  const info = {
+                    email: user.email,
+                    isPass: false
+                  }
+                  const res = await api.post("/user/login", info)
+                  dispatch(loginUser(res.data.info))
+                  console.log(res)
+                  toast.success("Login successfully")
+                  navigate(`/Dashboard/${res.data.info._id}`)
+                }}
+                onError={() => {
+                  console.log("Error at login at google login")
+                  console.log(error)
+                  toast.error("Login failed")
+                }}
+              />
 
             </div>
 

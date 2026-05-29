@@ -153,17 +153,20 @@ export default function Signup() {
 
               {/* GOOGLE */}
               <GoogleLogin
-                onSuccess={(credentialResponse) => {
-
+                onSuccess={async (credentialResponse) => {
                   const user = jwtDecode(credentialResponse.credential);
-
                   console.log(user);
+                  const info = {
+                    name: user.name,
+                    email: user.email,
+                    isPass: false
+                  }
+                  const res = await api.post("/user/signup", info)
+                  dispatch(loginUser(res.data.sending_user))
+                  console.log(res)
+                  toast.success("Signup successfully")
+                  navigate(`/Dashboard/${res.data.sending_user._id}`)
 
-                  toast.success("Google Login Successful");
-
-                  dispatch(loginUser(user));
-
-                  navigate("/Dashboard/");
                 }}
 
                 onError={() => {
