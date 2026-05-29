@@ -6,6 +6,8 @@ import { api } from "../api/axios";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../redux/authslice";
 import toast from "react-hot-toast";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 
 export default function Signup() {
 
@@ -150,9 +152,24 @@ export default function Signup() {
               </div>
 
               {/* GOOGLE */}
-              <button className="w-full py-3 rounded-xl border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-900 transition">
-                Continue with Google
-              </button>
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+
+                  const user = jwtDecode(credentialResponse.credential);
+
+                  console.log(user);
+
+                  toast.success("Google Login Successful");
+
+                  dispatch(loginUser(user));
+
+                  navigate("/Dashboard/");
+                }}
+
+                onError={() => {
+                  toast.error("Google Login Failed");
+                }}
+              />
 
             </div>
 
