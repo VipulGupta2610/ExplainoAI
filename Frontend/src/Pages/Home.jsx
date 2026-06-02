@@ -1,8 +1,13 @@
 import { motion } from "framer-motion";
 import { Sparkles, Video, Brain, Zap } from "lucide-react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 export default function Home() {
+
+const selector = useSelector(state=>state?.auth?.user?._id)
+
+
   return (
     <main className="bg-white dark:bg-black text-black dark:text-white">
 
@@ -33,7 +38,7 @@ export default function Home() {
             placeholder="Enter topic e.g. Binary Search"
             className="flex-1 px-4 py-3 rounded-xl bg-gray-100 dark:bg-gray-900 outline-none"
           />
-         <Link to={"/GeneratePage"}>
+         <Link to={`/Dashboard/${selector}`}>
           <button className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl font-medium transition">
             Generate Video
           </button>

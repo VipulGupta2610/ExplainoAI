@@ -50,7 +50,7 @@ const userSchema = mongoose.Schema({
     ],
     creditAval: {
         type: Number,
-        default: 5
+        default: 8
     },
 }, { timestamps: true })
 

@@ -6,6 +6,7 @@ import {
   Rocket,
   ShieldCheck,
 } from "lucide-react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 export default function PricingPage() {
@@ -31,7 +32,7 @@ export default function PricingPage() {
     {
       name: "Pro",
       icon: <Crown size={22} />,
-      price: "₹499",
+      price: "₹19",
       period: "/month",
       description:
         "Best for creators, developers, and serious learners who need more power.",
@@ -51,7 +52,7 @@ export default function PricingPage() {
     {
       name: "Business",
       icon: <Rocket size={22} />,
-      price: "₹1499",
+      price: "₹99",
       period: "/month",
       description:
         "Built for teams, educators, and agencies managing high-volume content.",
@@ -69,6 +70,25 @@ export default function PricingPage() {
       highlight: false,
     },
   ];
+
+    const handlePayment = async () => {
+
+    const stripe = await stripePromise;
+
+    const response = await axios.post(
+      "http://localhost:5000/api/payment/create-checkout-session",
+      {
+        productName: "Premium Plan",
+        price: 499,
+      }
+    );
+
+    const sessionId = response.data.id;
+
+    await stripe.redirectToCheckout({
+      sessionId,
+    });
+  };
 
   return (
     <main className="min-h-screen mt-12 bg-white dark:bg-black text-black dark:text-white px-6 py-16">
@@ -157,6 +177,7 @@ export default function PricingPage() {
 
             {/* BUTTON */}
             <button
+            onClick={()=>{toast.error("Currently you can't buy any plan..")}}
               className={`w-full py-3 rounded-2xl font-medium transition
                 ${
                   plan.highlight
@@ -173,9 +194,9 @@ export default function PricingPage() {
 
       {/* WHY UPGRADE */}
       <section className="max-w-6xl mx-auto mb-24">
-        <h2 className="text-4xl font-bold text-center mb-14">
+        <button onClick={handlePayment} className="text-4xl font-bold text-center mb-14">
           Why upgrade to Pro?
-        </h2>
+        </button>
 
         <div className="grid md:grid-cols-3 gap-8">
           {[

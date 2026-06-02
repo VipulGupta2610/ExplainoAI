@@ -187,11 +187,12 @@ export default function GeneratePage() {
                   <button
                     type="button"
                     key={voice}
+                    disabled={voice == "male"}
                     onClick={() => updateInfo("Voice", voice)}
                     className={`px-6 py-3 rounded-xl ${info.Voice === voice
                       ? "bg-blue-600 text-white"
                       : "bg-gray-100 dark:bg-gray-900"
-                      }`}
+                      } ${voice == "male"? "opacity-50": ""}`}
                   >
                     {voice.toUpperCase()}
                   </button>
@@ -200,10 +201,11 @@ export default function GeneratePage() {
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold mb-4">
+              <h2 className="text-xl font-semibold mb-4 opacity-50">
                 Duration ({info.Duration}s)
               </h2>
               <input
+              disabled={true}
                 type="range"
                 min="15"
                 max="300"
@@ -211,7 +213,7 @@ export default function GeneratePage() {
                 onChange={(event) =>
                   updateInfo("Duration", Number(event.target.value))
                 }
-                className="w-full"
+                className="w-full opacity-50"
               />
             </section>
 
@@ -257,9 +259,11 @@ export default function GeneratePage() {
                   />
                 </label>
 
-                <label className="flex justify-between gap-4">
+                <label className="flex justify-between gap-4 opacity-75">
                   Background Music
                   <input
+                  disabled
+                  className="opacity-50"
                     type="checkbox"
                     checked={info.Background_Music}
                     onChange={(event) =>
