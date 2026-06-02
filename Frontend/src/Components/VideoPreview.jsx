@@ -114,10 +114,10 @@ ${script?.ending_cta || ""}
 
   const getVideoLayout = () => {
     if (videoType === "full") {
-      return "w-full h-[500px]";
+      return "w-full min-h-[360px] sm:h-[500px]";
     }
 
-    return "w-full h-[700px]";
+    return "w-full min-h-[560px] sm:h-[700px]";
   };
 
   const getTextSize = () => {
@@ -801,7 +801,7 @@ ${script?.ending_cta || ""}
 
   return (
     <div
-      className={`relative rounded-3xl overflow-hidden border border-gray-800 p-8 flex flex-col bg-gradient-to-br ${getBackgroundTheme()} ${getVideoLayout()}`}
+      className={`relative rounded-3xl overflow-hidden border border-gray-800 p-4 sm:p-8 flex flex-col bg-gradient-to-br ${getBackgroundTheme()} ${getVideoLayout()}`}
     >
       <div ref={captureRef} className="flex-1 flex flex-col">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -811,8 +811,8 @@ ${script?.ending_cta || ""}
 
         {renderSpeakerCharacter()}
 
-        <div className="absolute top-6 left-6 z-20">
-          <h2 className="text-xl md:text-2xl font-bold text-blue-400 leading-tight">
+        <div className="absolute top-4 left-4 right-4 sm:top-6 sm:left-6 sm:right-6 z-20 min-w-0">
+          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-blue-400 leading-tight break-words">
             {topic || "Explaino AI"}
           </h2>
           <p className="text-xs text-gray-300 mt-1">
@@ -823,7 +823,7 @@ ${script?.ending_cta || ""}
           </p>
         </div>
 
-        <div className="relative z-10 flex-1 flex items-end justify-center pb-16 px-6 overflow-hidden">
+        <div className="relative z-10 flex-1 flex items-end justify-center pb-12 sm:pb-16 px-2 sm:px-6 overflow-hidden">
           <motion.div
             initial={false}
             animate={{
@@ -833,10 +833,10 @@ ${script?.ending_cta || ""}
             transition={{
               duration: 0.4,
             }}
-            className={`min-h-[120px] max-h-[220px] flex items-center justify-center text-center font-semibold leading-[1.28] text-white max-w-[86%] mx-auto break-words [overflow-wrap:anywhere] ${getTextSize()}`}
+            className={`min-h-[96px] sm:min-h-[120px] max-h-[220px] flex items-center justify-center text-center font-semibold leading-[1.28] text-white max-w-[96%] sm:max-w-[86%] mx-auto break-words [overflow-wrap:anywhere] ${getTextSize()}`}
           >
             {showSubtitles && (
-              <div className="rounded-2xl bg-black/60 px-5 py-4 shadow-2xl max-w-full">
+              <div className="rounded-2xl bg-black/60 px-4 sm:px-5 py-3 sm:py-4 shadow-2xl max-w-full">
                 {getPreviewCaptionLines(captions[currentIndex]).map((line, index) => (
                   <div key={`${line}-${index}`}>
                     {renderSubtitleText(line)}
@@ -853,10 +853,10 @@ ${script?.ending_cta || ""}
           <source src={getVoiceUrl()} type="audio/mpeg" />
         </audio>
 
-        <div className="flex items-center justify-center gap-3 flex-wrap">
+        <div className="grid grid-cols-1 sm:flex sm:items-center sm:justify-center gap-3">
           <button
             onClick={handlePlay}
-            className="px-6 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-semibold transition"
+            className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-semibold transition"
           >
             Play
           </button>
@@ -877,7 +877,7 @@ ${script?.ending_cta || ""}
                 }
               }
             }}
-            className="px-6 py-3 rounded-2xl bg-gray-800 hover:bg-gray-700 text-white font-semibold transition"
+            className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-gray-800 hover:bg-gray-700 text-white font-semibold transition"
           >
             {isPaused ? "Resume" : "Pause"}
           </button>
@@ -885,7 +885,7 @@ ${script?.ending_cta || ""}
           <button
             onClick={downloadFinalVideo}
             disabled={isDownloading}
-            className="px-6 py-3 rounded-2xl border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white disabled:opacity-60 disabled:cursor-not-allowed transition"
+            className="w-full sm:w-auto px-6 py-3 rounded-2xl border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white disabled:opacity-60 disabled:cursor-not-allowed transition"
           >
             {isDownloading ? "Downloading..." : "Download Video"}
           </button>

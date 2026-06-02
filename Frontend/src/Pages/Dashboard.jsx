@@ -30,15 +30,15 @@ export default function Dashboard() {
   const resetDate = getNextMonthResetDate();
 
   return (
-    <main className="min-h-screen mt-18 bg-white dark:bg-black text-black dark:text-white px-6 py-10">
+    <main className="min-h-screen bg-white dark:bg-black text-black dark:text-white px-4 sm:px-6 pt-28 sm:pt-32 pb-10 overflow-hidden">
       <section className="max-w-7xl mx-auto mb-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+          className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 min-w-0"
         >
-          <div>
-            <h1 className="text-4xl font-bold mb-2">
+          <div className="min-w-0">
+            <h1 className="text-3xl sm:text-4xl font-bold mb-2 break-words">
               Welcome back, {selector?.name || "Creator"}
             </h1>
             <p className="text-gray-500">
@@ -46,8 +46,8 @@ export default function Dashboard() {
             </p>
           </div>
 
-          <Link to={`/GeneratePage/${selector?._id}`}>
-            <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl font-medium transition hover:scale-105">
+          <Link to={`/GeneratePage/${selector?._id}`} className="w-full sm:w-auto md:shrink-0">
+            <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl font-medium transition hover:scale-105">
               <Plus size={18} />
               Create New Video
             </button>
@@ -55,13 +55,13 @@ export default function Dashboard() {
         </motion.div>
       </section>
 
-      <section className="max-w-7xl mx-auto grid md:grid-cols-3 gap-6 mb-12">
+      <section className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         <div className="p-6 rounded-3xl bg-gray-100 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-medium text-gray-500">Total Videos</h3>
             <Video className="text-blue-500" />
           </div>
-          <h2 className="text-4xl font-bold">{videos.length}</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold">{videos.length}</h2>
           <p className="text-sm text-gray-500 mt-2">
             Videos generated so far
           </p>
@@ -72,7 +72,7 @@ export default function Dashboard() {
             <h3 className="font-medium text-gray-500">Remaining Credits</h3>
             <Sparkles className="text-blue-500" />
           </div>
-          <h2 className="text-4xl font-bold">{selector?.creditAval ?? 0}</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold">{selector?.creditAval ?? 0}</h2>
           <p className="text-sm text-gray-500 mt-2">
             Free generation credits left
           </p>
@@ -83,7 +83,7 @@ export default function Dashboard() {
             <h3 className="font-medium text-gray-500">Current Plan</h3>
             <Crown className="text-blue-500" />
           </div>
-          <h2 className="text-4xl font-bold">{selector?.package || "Free"}</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold break-words">{selector?.package || "Free"}</h2>
           <p className="text-sm text-gray-500 mt-2">
             Upgrade anytime for more power
           </p>
@@ -92,9 +92,9 @@ export default function Dashboard() {
 
       <section className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
-          <div className="p-6 rounded-3xl bg-gray-100 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+          <div className="p-4 sm:p-6 rounded-3xl bg-gray-100 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-semibold">
+              <h2 className="text-xl sm:text-2xl font-semibold">
                 Recent Videos
               </h2>
             </div>
@@ -110,14 +110,14 @@ export default function Dashboard() {
                     key={`${video.videoName}-${video.generatedAt}-${index}`}
                     className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-4 rounded-2xl bg-white dark:bg-black border border-gray-200 dark:border-zinc-800"
                   >
-                    <div>
-                      <h3 className="font-medium">{video.videoName}</h3>
+                    <div className="min-w-0">
+                      <h3 className="font-medium break-words">{video.videoName}</h3>
                       <p className="text-sm text-gray-500">
                         {video.type || "Video"} - {new Date(video.generatedAt).toLocaleDateString()}
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-3 sm:gap-4 flex-wrap md:flex-nowrap">
                       <span className="text-sm px-3 py-1 rounded-full bg-green-100 text-green-700">
                         {video.status || "Completed"}
                       </span>
@@ -131,7 +131,7 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="p-6 rounded-3xl bg-blue-50 dark:bg-blue-950 border border-blue-100 dark:border-blue-900">
+          <div className="p-4 sm:p-6 rounded-3xl bg-blue-50 dark:bg-blue-950 border border-blue-100 dark:border-blue-900">
             <h2 className="text-xl font-semibold mb-3">
               Quick Tips for Better Videos
             </h2>
@@ -145,33 +145,33 @@ export default function Dashboard() {
         </div>
 
         <div className="space-y-8">
-          <div className="p-6 rounded-3xl bg-gray-100 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+          <div className="p-4 sm:p-6 rounded-3xl bg-gray-100 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
             <h2 className="text-xl font-semibold mb-6">
               Account Summary
             </h2>
 
-            <div className="flex items-center gap-4 mb-6">
+            <div className="flex items-center gap-4 mb-6 min-w-0">
               <div className="w-14 h-14 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
                 <UserRound className="text-blue-500" />
               </div>
-              <div>
-                <h3 className="font-semibold">{selector?.name || "Creator"}</h3>
-                <p className="text-sm text-gray-500">{selector?.email}</p>
+              <div className="min-w-0">
+                <h3 className="font-semibold truncate">{selector?.name || "Creator"}</h3>
+                <p className="text-sm text-gray-500 truncate">{selector?.email}</p>
               </div>
             </div>
 
             <div className="space-y-4 text-sm">
-              <div className="flex justify-between">
+              <div className="flex justify-between gap-4">
                 <span className="text-gray-500">Subscription</span>
                 <span>{selector?.package || "Free"}</span>
               </div>
 
-              <div className="flex justify-between">
+              <div className="flex justify-between gap-4">
                 <span className="text-gray-500">Reset Date</span>
                 <span>{resetDate}</span>
               </div>
 
-              <div className="flex justify-between">
+              <div className="flex justify-between gap-4">
                 <span className="text-gray-500">Credits Left</span>
                 <span>{selector?.creditAval ?? 0}</span>
               </div>

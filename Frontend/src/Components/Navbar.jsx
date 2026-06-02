@@ -57,18 +57,18 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 border-b border-gray-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl text-gray-900 dark:text-white transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <div className="h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="h-16 sm:h-20 flex items-center justify-between gap-3">
 
           {/* LEFT - LOGO */}
           <Link to="/" className="shrink-0">
-            <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-gray-900 dark:text-white whitespace-nowrap">
               Explaino <span className="text-blue-500">AI</span>
             </h1>
           </Link>
 
           {/* CENTER - DESKTOP NAV */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700 dark:text-gray-200">
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium text-gray-700 dark:text-gray-200">
 
             {user ? (
               <Link
@@ -102,7 +102,7 @@ export default function Navbar() {
           </nav>
 
           {/* RIGHT - DESKTOP ACTIONS */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-3 xl:gap-4">
 
             {/* Theme Toggle */}
             <button
@@ -129,7 +129,7 @@ export default function Navbar() {
                 onClick={() =>
                   navigate(`/Dashboard/${user?._id}`)
                 }
-                className="flex items-center gap-3 px-4 py-2 rounded-2xl bg-gray-100 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 hover:scale-[1.02] transition-all shadow-sm cursor-pointer"
+                className="flex items-center gap-3 px-3 xl:px-4 py-2 rounded-2xl bg-gray-100 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 hover:scale-[1.02] transition-all shadow-sm cursor-pointer min-w-0"
               >
                 {/* Avatar */}
                 <div className="w-11 h-11 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
@@ -174,7 +174,7 @@ export default function Navbar() {
                 </Link>
 
                 <Link to="/user/signup">
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-sm font-medium transition hover:scale-105">
+                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 xl:px-5 py-2.5 rounded-xl text-sm font-medium transition hover:scale-105 whitespace-nowrap">
                     Get Started
                   </button>
                 </Link>
@@ -185,7 +185,7 @@ export default function Navbar() {
 
           {/* MOBILE MENU BUTTON */}
           <button
-            className="md:hidden p-2 rounded-lg text-gray-800 dark:text-white"
+            className="lg:hidden p-2 rounded-lg text-gray-800 dark:text-white"
             onClick={() => setOpen(!open)}
           >
             {open ? (
@@ -198,7 +198,7 @@ export default function Navbar() {
 
         {/* MOBILE MENU */}
         {open && (
-          <div className="md:hidden pb-6 pt-2 space-y-5 border-t border-gray-200 dark:border-zinc-800">
+          <div className="lg:hidden pb-6 pt-2 space-y-5 border-t border-gray-200 dark:border-zinc-800">
 
             <nav className="space-y-4 pt-4 text-gray-800 dark:text-gray-200">
 
@@ -234,7 +234,7 @@ export default function Navbar() {
             </nav>
 
             {user ? (
-              <div className="flex items-center gap-3 p-4 rounded-2xl bg-gray-100 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+              <div className="flex items-center gap-3 p-4 rounded-2xl bg-gray-100 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 min-w-0">
 
                 <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
                   <UserRound
@@ -243,12 +243,12 @@ export default function Navbar() {
                   />
                 </div>
 
-                <div className="leading-tight">
-                  <p className="font-medium text-sm text-gray-900 dark:text-white">
+                <div className="leading-tight min-w-0">
+                  <p className="font-medium text-sm text-gray-900 dark:text-white truncate">
                     {user?.name}
                   </p>
 
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                  <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
                     {user?.email}
                   </p>
                 </div>

@@ -9,14 +9,14 @@ const selector = useSelector(state=>state?.auth?.user?._id)
 
 
   return (
-    <main className="bg-white dark:bg-black text-black dark:text-white">
+    <main className="bg-white dark:bg-black text-black dark:text-white overflow-hidden">
 
       {/* HERO */}
-      <section className="min-h-screen flex flex-col justify-center items-center text-center px-6">
+      <section className="min-h-[calc(100svh-4rem)] sm:min-h-[calc(100svh-5rem)] flex flex-col justify-center items-center text-center px-4 sm:px-6 pt-28 pb-16">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-4xl md:text-6xl font-bold leading-tight max-w-4xl"
+          className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight max-w-4xl"
         >
           Turn Any Topic Into a{" "}
           <span className="text-blue-500">Stunning Video</span> in Seconds
@@ -25,39 +25,60 @@ const selector = useSelector(state=>state?.auth?.user?._id)
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-6 text-lg text-gray-600 dark:text-gray-400 max-w-2xl"
+          className="mt-5 sm:mt-6 text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl"
         >
           Explaino AI generates scripts, voice, and visuals automatically.
           Learn faster or create content effortlessly.
         </motion.p>
 
         {/* Input Box */}
-        <div className="mt-8 flex flex-col md:flex-row gap-3 w-full max-w-xl">
+        <div className="mt-8 flex flex-col sm:flex-row gap-3 w-full max-w-xl">
           <input
             type="text"
             placeholder="Enter topic e.g. Binary Search"
-            className="flex-1 px-4 py-3 rounded-xl bg-gray-100 dark:bg-gray-900 outline-none"
+            className="min-w-0 flex-1 px-4 py-3 rounded-xl bg-gray-100 dark:bg-gray-900 outline-none"
           />
-         <Link to={`/Dashboard/${selector}`}>
-          <button className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl font-medium transition">
+         <Link to={`/Dashboard/${selector}`} className="sm:shrink-0">
+          <button className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl font-medium transition">
             Generate Video
           </button>
          </Link>
         </div>
 
         {/* Demo Card */}
-        <div className="mt-12 w-full max-w-4xl h-64 rounded-2xl bg-gray-200 dark:bg-gray-900 flex items-center justify-center">
-          <span className="text-gray-500">Video Preview</span>
-        </div>
+    <div className="mt-10 sm:mt-12 w-full max-w-4xl grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+  <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg">
+    <h2 className="text-4xl font-bold text-blue-600">100+</h2>
+    <p className="text-gray-600 dark:text-gray-400">
+      Topics Explained
+    </p>
+  </div>
+
+  <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg">
+    <h2 className="text-4xl font-bold text-purple-600">95%</h2>
+    <p className="text-gray-600 dark:text-gray-400">
+      Faster Learning
+    </p>
+  </div>
+
+  <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg">
+    <h2 className="text-4xl font-bold text-green-600">24/7</h2>
+    <p className="text-gray-600 dark:text-gray-400">
+      AI Assistance
+    </p>
+  </div>
+  
+</div>
+
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="py-24 px-6 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-semibold text-center mb-16">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
+        <h2 className="text-2xl sm:text-3xl font-semibold text-center mb-10 sm:mb-16">
           How it works
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-10 text-center">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 text-center">
           {[
             {
               icon: <Sparkles />,
@@ -87,11 +108,11 @@ const selector = useSelector(state=>state?.auth?.user?._id)
       </section>
 
       {/* FEATURES */}
-      <section className="py-24 px-6 bg-gray-50 dark:bg-[#0a0a0a]">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-gray-50 dark:bg-[#0a0a0a]">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           <div>
-            <h2 className="text-3xl font-semibold mb-6">
+            <h2 className="text-2xl sm:text-3xl font-semibold mb-6">
               Everything you need to create videos
             </h2>
 
@@ -103,19 +124,57 @@ const selector = useSelector(state=>state?.auth?.user?._id)
             </ul>
           </div>
 
-          <div className="h-80 bg-gray-200 dark:bg-gray-900 rounded-2xl flex items-center justify-center">
-            UI Preview
-          </div>
+        <div className="h-auto min-h-[22rem] sm:h-80 bg-white dark:bg-gray-900 rounded-2xl shadow-xl overflow-hidden border border-gray-200 dark:border-gray-800">
+
+  {/* Top Bar */}
+  <div className="h-12 bg-gray-100 dark:bg-gray-800 flex items-center px-4 gap-2">
+    <div className="w-3 h-3 rounded-full bg-red-500"></div>
+    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+  </div>
+
+  {/* Main Content */}
+  <div className="p-4 sm:p-6 h-full">
+    <div className="flex gap-3 sm:gap-4 h-full min-w-0">
+
+      {/* Sidebar */}
+      <div className="w-1/4 min-w-[3.75rem] space-y-3">
+        <div className="h-10 bg-blue-500 rounded-lg"></div>
+        <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>
+        <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>
+        <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>
+      </div>
+
+      {/* Main Section */}
+      <div className="flex-1">
+        <div className="h-10 w-2/3 bg-purple-500 rounded-lg mb-4"></div>
+
+        <div className="space-y-3">
+          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded"></div>
+          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div>
+          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-4/6"></div>
+        </div>
+
+        <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-6">
+          <div className="h-20 bg-blue-100 dark:bg-blue-900 rounded-xl"></div>
+          <div className="h-20 bg-purple-100 dark:bg-purple-900 rounded-xl"></div>
+          <div className="h-20 bg-pink-100 dark:bg-pink-900 rounded-xl"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
         </div>
       </section>
 
       {/* USE CASES */}
-      <section className="py-24 px-6 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-semibold text-center mb-16">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
+        <h2 className="text-2xl sm:text-3xl font-semibold text-center mb-10 sm:mb-16">
           Built for everyone
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
           {[
             { title: "Students", desc: "Understand concepts visually faster." },
             { title: "YouTubers", desc: "Create content without editing." },
@@ -129,8 +188,8 @@ const selector = useSelector(state=>state?.auth?.user?._id)
         </div>
       </section>
 
-<section className="py-24 px-6 max-w-6xl mx-auto text-center">
-  <h2 className="text-3xl font-semibold mb-6">
+<section className="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto text-center">
+  <h2 className="text-2xl sm:text-3xl font-semibold mb-6">
     Creating educational videos is slow and painful
   </h2>
 
@@ -139,7 +198,7 @@ const selector = useSelector(state=>state?.auth?.user?._id)
     Most people give up before they even start.
   </p>
 
-  <div className="grid md:grid-cols-3 gap-8">
+  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
     {[
       "Hours spent writing scripts",
       "Editing videos is complex",
@@ -152,8 +211,8 @@ const selector = useSelector(state=>state?.auth?.user?._id)
   </div>
 </section>
 
-<section className="py-24 px-6 bg-gray-50 dark:bg-[#0a0a0a] text-center">
-  <h2 className="text-3xl font-semibold mb-6">
+<section className="py-16 sm:py-24 px-4 sm:px-6 bg-gray-50 dark:bg-[#0a0a0a] text-center">
+  <h2 className="text-2xl sm:text-3xl font-semibold mb-6">
     Explaino AI fixes all of this
   </h2>
 
@@ -162,12 +221,12 @@ const selector = useSelector(state=>state?.auth?.user?._id)
   </p>
 </section>
 
-<section className="py-24 px-6 max-w-6xl mx-auto">
-  <h2 className="text-3xl font-semibold text-center mb-16">
+<section className="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
+  <h2 className="text-2xl sm:text-3xl font-semibold text-center mb-10 sm:mb-16">
     Built for powerful video creation
   </h2>
 
-  <div className="grid md:grid-cols-3 gap-10">
+  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
     {[
       {
         title: "AI Script Engine",
@@ -200,12 +259,12 @@ const selector = useSelector(state=>state?.auth?.user?._id)
       </div>
     ))}
   </div>
-</section><section className="py-24 px-6 bg-gray-50 dark:bg-[#0a0a0a] text-center">
-  <h2 className="text-3xl font-semibold mb-12">
+</section><section className="py-16 sm:py-24 px-4 sm:px-6 bg-gray-50 dark:bg-[#0a0a0a] text-center">
+  <h2 className="text-2xl sm:text-3xl font-semibold mb-10 sm:mb-12">
     From idea to video in seconds
   </h2>
 
-  <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-sm">
+  <div className="flex flex-col sm:flex-row flex-wrap justify-center items-stretch sm:items-center gap-3 sm:gap-6 text-sm">
     <div className="p-4 bg-gray-200 dark:bg-gray-800 rounded-xl">Topic</div>
     <div>→</div>
     <div className="p-4 bg-gray-200 dark:bg-gray-800 rounded-xl">Script</div>
@@ -215,21 +274,44 @@ const selector = useSelector(state=>state?.auth?.user?._id)
     <div className="p-4 bg-gray-200 dark:bg-gray-800 rounded-xl">Video</div>
   </div>
 </section>
-<section className="py-24 px-6 max-w-6xl mx-auto">
-  <h2 className="text-3xl font-semibold text-center mb-12">
+<section className="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
+  <h2 className="text-2xl sm:text-3xl font-semibold text-center mb-10 sm:mb-12">
     See it in action
   </h2>
 
-  <div className="h-96 rounded-2xl bg-gray-200 dark:bg-gray-900 flex items-center justify-center">
-    Full Video Demo Preview
+<div className="min-h-[34rem] sm:min-h-96 rounded-2xl bg-gradient-to-br from-blue-600 to-purple-700 text-white flex items-center justify-center p-4 sm:p-6">
+
+  <div className="flex flex-col lg:flex-row items-center justify-center gap-4 sm:gap-8 w-full">
+
+    <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl">
+      <h3 className="font-bold text-lg">Input Topic</h3>
+      <p className="mt-2">Binary Search</p>
+    </div>
+
+    <div className="text-3xl sm:text-5xl rotate-90 lg:rotate-0">→</div>
+
+    <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl">
+      <h3 className="font-bold text-lg">AI Processing</h3>
+      <p className="mt-2">Generating Script...</p>
+    </div>
+
+    <div className="text-3xl sm:text-5xl rotate-90 lg:rotate-0">→</div>
+
+    <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl">
+      <div className="text-4xl mb-2">🎥</div>
+      <h3 className="font-bold text-lg">Explainer Video</h3>
+    </div>
+
   </div>
+
+</div>
 </section>
-<section className="py-24 px-6 bg-gray-50 dark:bg-[#0a0a0a]">
-  <h2 className="text-3xl font-semibold text-center mb-16">
+<section className="py-16 sm:py-24 px-4 sm:px-6 bg-gray-50 dark:bg-[#0a0a0a]">
+  <h2 className="text-2xl sm:text-3xl font-semibold text-center mb-10 sm:mb-16">
     Loved by creators and learners
   </h2>
 
-  <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
     {[
       "Saved me hours of editing time!",
       "Perfect for explaining coding concepts.",
@@ -241,8 +323,8 @@ const selector = useSelector(state=>state?.auth?.user?._id)
     ))}
   </div>
 </section>
-<section className="py-24 px-6 max-w-5xl mx-auto text-center">
-  <h2 className="text-3xl font-semibold mb-12">
+<section className="py-16 sm:py-24 px-4 sm:px-6 max-w-5xl mx-auto text-center">
+  <h2 className="text-2xl sm:text-3xl font-semibold mb-10 sm:mb-12">
     Why choose Explaino AI?
   </h2>
 
@@ -266,8 +348,8 @@ const selector = useSelector(state=>state?.auth?.user?._id)
     </div>
   </div>
 </section>
-<section className="py-24 px-6 max-w-4xl mx-auto">
-  <h2 className="text-3xl font-semibold text-center mb-12">
+<section className="py-16 sm:py-24 px-4 sm:px-6 max-w-4xl mx-auto">
+  <h2 className="text-2xl sm:text-3xl font-semibold text-center mb-10 sm:mb-12">
     Frequently Asked Questions
   </h2>
 
@@ -295,8 +377,8 @@ const selector = useSelector(state=>state?.auth?.user?._id)
 </section>
 
       {/* DEMO / INTERACTIVE */}
-      <section className="py-24 px-6 text-center bg-gray-50 dark:bg-[#0a0a0a]">
-        <h2 className="text-3xl font-semibold mb-6">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 text-center bg-gray-50 dark:bg-[#0a0a0a]">
+        <h2 className="text-2xl sm:text-3xl font-semibold mb-6">
           Try a sample instantly
         </h2>
 
@@ -315,8 +397,8 @@ const selector = useSelector(state=>state?.auth?.user?._id)
       
 
       {/* CTA */}
-      <section className="py-24 px-6 text-center">
-        <h2 className="text-4xl font-bold mb-6">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 text-center">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-6">
           Start creating videos in seconds
         </h2>
         <p className="text-gray-600 dark:text-gray-400 mb-8">

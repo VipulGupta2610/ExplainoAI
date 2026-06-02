@@ -40,7 +40,7 @@ export default function Signup() {
   }
 
   return (
-    <div className="min-h-screen flex bg-white dark:bg-black text-black dark:text-white">
+    <div className="min-h-screen flex bg-white dark:bg-black text-black dark:text-white overflow-hidden">
 
       {/* LEFT SIDE */}
       <div className="hidden lg:flex w-1/2 relative items-center justify-center overflow-hidden">
@@ -67,7 +67,7 @@ export default function Signup() {
       </div>
 
       {/* RIGHT SIDE */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center px-6">
+      <div className="w-full lg:w-1/2 flex items-center justify-center px-4 sm:px-6 pt-28 sm:pt-32 pb-12">
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -76,7 +76,7 @@ export default function Signup() {
         >
 
           {/* TITLE */}
-          <h2 className="text-3xl font-semibold mb-2">
+          <h2 className="text-2xl sm:text-3xl font-semibold mb-2">
             Create your account 🚀
           </h2>
 

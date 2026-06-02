@@ -6,11 +6,11 @@ import Footer from '../Components/Footer';
 const AppLayout = () => {
 
   return (
-    <>
+    <div className="min-w-0 overflow-x-hidden">
       <Navbar/>
       <Outlet/>
       <Footer/>
-    </>
+    </div>
   );
 }
 

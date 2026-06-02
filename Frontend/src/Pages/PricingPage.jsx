@@ -91,10 +91,10 @@ export default function PricingPage() {
   };
 
   return (
-    <main className="min-h-screen mt-12 bg-white dark:bg-black text-black dark:text-white px-6 py-16">
+    <main className="min-h-screen bg-white dark:bg-black text-black dark:text-white px-4 sm:px-6 pt-28 sm:pt-32 pb-16 overflow-hidden">
 
       {/* HERO */}
-      <section className="max-w-5xl mx-auto text-center mb-20">
+      <section className="max-w-5xl mx-auto text-center mb-14 sm:mb-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -103,12 +103,12 @@ export default function PricingPage() {
             Pricing Plans
           </p>
 
-          <h1 className="text-5xl font-bold mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
             Simple Pricing for Powerful
             <span className="text-blue-500"> AI Video Creation</span>
           </h1>
 
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-500 max-w-2xl mx-auto">
             Choose the perfect plan for your learning, content creation,
             and business growth. Start free and upgrade when you’re ready.
           </p>
@@ -116,16 +116,16 @@ export default function PricingPage() {
       </section>
 
       {/* PRICING CARDS */}
-      <section className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8 mb-24">
+      <section className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16 sm:mb-24">
 
         {plans.map((plan, index) => (
           <motion.div
             key={index}
             whileHover={{ y: -6 }}
-            className={`rounded-3xl border p-8 relative transition
+            className={`rounded-3xl border p-6 sm:p-8 relative transition
               ${
                 plan.highlight
-                  ? "border-blue-500 bg-blue-50 dark:bg-blue-950 shadow-xl scale-[1.02]"
+                  ? "border-blue-500 bg-blue-50 dark:bg-blue-950 shadow-xl lg:scale-[1.02]"
                   : "border-gray-200 dark:border-zinc-800 bg-gray-50 dark:bg-zinc-900"
               }
             `}
@@ -151,7 +151,7 @@ export default function PricingPage() {
               </p>
 
               <div className="flex items-end gap-1">
-                <h3 className="text-5xl font-bold">
+                <h3 className="text-4xl sm:text-5xl font-bold">
                   {plan.price}
                 </h3>
                 <span className="text-gray-500 mb-2">
@@ -193,12 +193,12 @@ export default function PricingPage() {
       </section>
 
       {/* WHY UPGRADE */}
-      <section className="max-w-6xl mx-auto mb-24">
-        <button onClick={handlePayment} className="text-4xl font-bold text-center mb-14">
+      <section className="max-w-6xl mx-auto mb-16 sm:mb-24">
+        <button onClick={handlePayment} className="block mx-auto text-3xl sm:text-4xl font-bold text-center mb-10 sm:mb-14">
           Why upgrade to Pro?
         </button>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {[
             {
               icon: <Crown className="text-blue-500" />,
@@ -218,7 +218,7 @@ export default function PricingPage() {
           ].map((item, i) => (
             <div
               key={i}
-              className="p-8 rounded-3xl bg-gray-100 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800"
+              className="p-6 sm:p-8 rounded-3xl bg-gray-100 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800"
             >
               <div className="mb-4">{item.icon}</div>
               <h3 className="text-xl font-semibold mb-3">
@@ -233,12 +233,12 @@ export default function PricingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="max-w-4xl mx-auto mb-24">
-        <h2 className="text-4xl font-bold text-center mb-12">
+      <section className="max-w-4xl mx-auto mb-16 sm:mb-24">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 sm:mb-12">
           Frequently Asked Questions
         </h2>
 
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {[
             {
               q: "Can I start with the free plan?",
@@ -255,7 +255,7 @@ export default function PricingPage() {
           ].map((faq, i) => (
             <div
               key={i}
-              className="p-6 rounded-2xl bg-gray-100 dark:bg-zinc-900"
+              className="p-5 sm:p-6 rounded-2xl bg-gray-100 dark:bg-zinc-900"
             >
               <h3 className="font-semibold mb-2">
                 {faq.q}
@@ -270,7 +270,7 @@ export default function PricingPage() {
 
       {/* FINAL CTA */}
       <section className="max-w-5xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-6">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-6">
           Start creating videos smarter 🚀
         </h2>
 
@@ -279,7 +279,7 @@ export default function PricingPage() {
           Explaino AI helps you turn ideas into premium videos faster.
         </p>
 
-        <button onClick={()=>{window.history.back()}} className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-medium transition hover:scale-105">
+        <button onClick={()=>{window.history.back()}} className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-medium transition hover:scale-105">
           Get Started Free
         </button>
 

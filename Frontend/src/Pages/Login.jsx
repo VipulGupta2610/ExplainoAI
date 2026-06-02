@@ -34,7 +34,7 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex bg-white dark:bg-black text-black dark:text-white">
+    <div className="min-h-screen flex bg-white dark:bg-black text-black dark:text-white overflow-hidden">
 
       {/* LEFT SIDE (BRANDING) */}
       <div className="hidden lg:flex w-1/2 relative items-center justify-center overflow-hidden">
@@ -61,7 +61,7 @@ export default function Login() {
       </div>
 
       {/* RIGHT SIDE (FORM) */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center px-6">
+      <div className="w-full lg:w-1/2 flex items-center justify-center px-4 sm:px-6 pt-28 sm:pt-32 pb-12">
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -70,7 +70,7 @@ export default function Login() {
         >
 
           {/* TITLE */}
-          <h2 className="text-3xl font-semibold mb-2">
+          <h2 className="text-2xl sm:text-3xl font-semibold mb-2">
             Welcome back 👋
           </h2>
 
@@ -105,7 +105,7 @@ export default function Login() {
               </div>
 
               {/* OPTIONS */}
-              <div className="flex justify-between text-sm text-gray-500">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm text-gray-500">
                 <label className="flex items-center gap-2">
                   <input type="checkbox" />
                   Remember me
