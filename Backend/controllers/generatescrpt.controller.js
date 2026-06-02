@@ -13,14 +13,14 @@ export const generateVideoController = async (req, res) => {
     console.log(user)
     if (!user) {
       return res.status(400).json({ message: "User not found" })
-      
+
     }
-    
+
     if (user.creditAval <= 0) {
       res.status(400).json({ message: "No credit left to create video upgrade to pro" })
       return
     }
-    
+
     const script = await generateScript(req.body);
     // combine JSON script into one text
     const fullScriptText = `
@@ -35,29 +35,29 @@ ${script.summary}
 ${script.ending_cta}
 `;
 
-const voiceFile = await generateVoice(
-  fullScriptText,
-  req.body.Tone
-);
+    const voiceFile = await generateVoice(
+      fullScriptText,
+      req.body.Tone
+    );
 
-user.creditAval-=1;
-user.totalVideos.push({
-  videoName: req.body.topic,
-  type: req.body.Video_Type,
-  status: "Completed",
-  duration: Number(req.body.Duration || req.body.Duartion || 60),
-  niche: req.body.Niche,
-  generatedAt: new Date(),
-})
-await user.save();
-console.log("EVERYTHING IS DONE")
+    user.creditAval -= 1;
+    user.totalVideos.push({
+      videoName: req.body.topic,
+      type: req.body.Video_Type,
+      status: "Completed",
+      duration: Number(req.body.Duration || req.body.Duartion || 60),
+      niche: req.body.Niche,
+      generatedAt: new Date(),
+    })
+    await user.save();
+    console.log("EVERYTHING IS DONE")
     // const slides = await generateSlides(script);
 
     res.status(200).json({
       success: true,
       script,
       voiceFile,
-user
+      user
     });
   } catch (error) {
     res.status(500).json({
