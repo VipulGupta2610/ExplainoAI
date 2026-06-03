@@ -6,7 +6,6 @@ import cors from "cors"
 const app = express()
 
 import userRoutes from "../Backend/routes/user.route.js"
-import paymentRoutes from "./routes/paymentRoutes.js";
 import generatingRoute from "../Backend/routes/generatescript.route.js"
 
 dotenv.config()
@@ -37,7 +36,6 @@ app.use("/slides", express.static("slides"));
 
 app.use("/user" , userRoutes);
 app.use("/generate" , generatingRoute);
-app.use("/api/payment", paymentRoutes);
 
 app.listen(port,()=>{
     console.log("App is listening on port ",port)
