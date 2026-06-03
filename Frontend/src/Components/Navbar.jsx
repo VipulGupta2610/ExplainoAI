@@ -87,7 +87,7 @@ export default function Navbar() {
             </Link>
 
             <Link
-              to="/how-it-works"
+              to="/HowitWorks"
               className="hover:text-blue-500 transition"
             >
               How it Works
@@ -219,7 +219,7 @@ export default function Navbar() {
               </Link>
 
               <Link
-                to="/how-it-works"
+                to="/HowitWorks"
                 className="block hover:text-blue-500 transition"
               >
                 How it Works

@@ -52,16 +52,91 @@ export default function Features() {
               <li>✔ Real examples included</li>
             </ul>
           </div>
-          <div className="min-h-56 sm:h-72 bg-gray-200 dark:bg-gray-900 rounded-2xl flex items-center justify-center text-center px-4">
-            Script Preview
-          </div>
+          <div className="min-h-56 sm:h-72 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 overflow-hidden">
+
+  <div className="flex items-center gap-2 mb-6">
+    <div className="w-3 h-3 rounded-full bg-red-500"></div>
+    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+
+    <span className="ml-3 text-sm text-gray-500">
+      Generated Script
+    </span>
+  </div>
+
+  <div className="space-y-4">
+    <div>
+      <h3 className="font-semibold text-lg mb-2">
+        Binary Search Explained
+      </h3>
+      <p className="text-gray-600 dark:text-gray-400">
+        Imagine searching for a word in a dictionary. Instead of checking
+        every page one by one, you open near the middle...
+      </p>
+    </div>
+
+    <div className="h-px bg-gray-200 dark:bg-gray-800"></div>
+
+    <p className="text-gray-600 dark:text-gray-400">
+      Binary Search repeatedly divides the search space into two halves,
+      making it much faster than a linear search.
+    </p>
+
+    <div className="flex gap-2 mt-4">
+      <span className="px-3 py-1 rounded-full text-xs bg-blue-100 dark:bg-blue-900">
+        Intro
+      </span>
+
+      <span className="px-3 py-1 rounded-full text-xs bg-purple-100 dark:bg-purple-900">
+        Example
+      </span>
+
+      <span className="px-3 py-1 rounded-full text-xs bg-pink-100 dark:bg-pink-900">
+        Summary
+      </span>
+    </div>
+  </div>
+
+</div>
         </div>
 
         {/* VOICE */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <div className="min-h-56 sm:h-72 bg-gray-200 dark:bg-gray-900 rounded-2xl flex items-center justify-center text-center px-4 order-2 lg:order-1">
-            Voice Waveform
-          </div>
+         <div className="min-h-56 sm:h-72 rounded-2xl bg-slate-900 p-6 flex flex-col justify-center items-center order-2 lg:order-1 overflow-hidden">
+
+  <div className="mb-8 text-center">
+    <h3 className="text-white text-xl font-semibold">
+      AI Voice Narration
+    </h3>
+    <p className="text-slate-400 text-sm mt-1">
+      Natural-sounding voice generated for your video
+    </p>
+  </div>
+
+  <div className="flex items-end gap-1 h-24">
+    {[35, 60, 45, 80, 55, 90, 40, 70, 50, 95, 65, 45, 85, 55, 75, 40].map(
+      (height, index) => (
+        <div
+          key={index}
+          className="w-2 rounded-full bg-gradient-to-t from-blue-500 to-purple-500 animate-pulse"
+          style={{ height: `${height}px` }}
+        />
+      )
+    )}
+  </div>
+
+  <div className="mt-8 flex items-center gap-3">
+    <button className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white hover:bg-blue-700 transition">
+      ▶
+    </button>
+
+    <div>
+      <p className="text-white text-sm">Narration Preview</p>
+      <p className="text-slate-400 text-xs">00:45 / 02:13</p>
+    </div>
+  </div>
+
+</div>
           <div className="order-1 lg:order-2">
             <h2 className="text-2xl sm:text-3xl font-semibold mb-4">
               Natural AI voice that feels human
@@ -92,9 +167,48 @@ export default function Features() {
               <li>✔ Ready-to-share format</li>
             </ul>
           </div>
-          <div className="min-h-56 sm:h-72 bg-gray-200 dark:bg-gray-900 rounded-2xl flex items-center justify-center text-center px-4">
-            Video Preview
-          </div>
+      <div className="min-h-56 sm:h-72 rounded-2xl overflow-hidden relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+
+  {/* Background Glow */}
+  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10"></div>
+
+  {/* Video Content */}
+  <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+
+    <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center cursor-pointer hover:scale-110 transition">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-8 h-8 ml-1"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path d="M8 5v14l11-7z" />
+      </svg>
+    </div>
+
+    <h3 className="mt-6 text-xl font-bold">
+      How Binary Search Works
+    </h3>
+
+    <p className="mt-2 text-gray-300 text-sm">
+      AI Generated Explanatory Video
+    </p>
+
+  </div>
+
+  {/* Timeline */}
+  <div className="absolute bottom-0 left-0 right-0 p-4">
+    <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+      <div className="h-full w-2/3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+    </div>
+
+    <div className="flex justify-between text-xs text-gray-400 mt-2">
+      <span>1:24</span>
+      <span>3:12</span>
+    </div>
+  </div>
+
+</div>
         </div>
 
       </section>

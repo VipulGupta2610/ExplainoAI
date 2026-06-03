@@ -8,6 +8,7 @@ import Signup from './Pages/Signup';
 import Features from './Pages/Features';
 import Dashboard from './Pages/Dashboard';
 import PricingPage from './Pages/PricingPage';
+import HowItWorks from './Pages/HowItWorks';
 
 const App = () => {
 
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path:"/PricingPage",
         element:<PricingPage/>
+      },
+      {
+        path:"/HowitWorks",
+        element:<HowItWorks/>
       },
       {
         path:"/user/Login",
