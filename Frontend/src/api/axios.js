@@ -3,6 +3,6 @@ import axios from "axios"
 
 
 export const api = axios.create({
-      baseURL: 'http://localhost:1111/', 
+      baseURL:[ 'http://localhost:1111/', 'https://explainoai-backend.onrender.com'],
     withCredentials:true
 })
